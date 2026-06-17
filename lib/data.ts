@@ -162,7 +162,7 @@ export const achievements: Achievement[] = [
   },
   {
     id: "national-hackathon",
-    title: "NATIONAL HACKATHON WINNER \u2014 GRID-MIND / SMARTHAN",
+    title: "NATIONAL HACKATHON WINNER",
     event: "IIT Kharagpur Alumni Assoc \u00d7 Shiv Nadar University",
     location: "Chennai, India",
     date: "JAN 2026",
