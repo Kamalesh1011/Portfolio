@@ -27,7 +27,7 @@ function TimelineCard({
   return (
     <div
       ref={ref}
-      className={`relative pl-12 pb-12 transition-all duration-700 ${
+      className={`relative pl-10 sm:pl-12 pb-10 sm:pb-12 transition-all duration-700 ${
         visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
       }`}
       style={{ transitionDelay: `${index * 200}ms` }}
@@ -47,18 +47,18 @@ function TimelineCard({
       </div>
 
       {/* Card */}
-      <div className="card-terminal p-6">
-        <div className="flex items-start justify-between gap-4 mb-2">
-          <div>
-            <h3 className="font-orbitron text-sm font-bold uppercase tracking-wide text-[var(--foreground)]">
+      <div className="card-terminal p-4 sm:p-6">
+        <div className="flex items-start justify-between gap-3 sm:gap-4 mb-2">
+          <div className="min-w-0">
+            <h3 className="font-orbitron text-xs sm:text-sm font-bold uppercase tracking-wide text-[var(--foreground)]">
               {exp.role}
             </h3>
-            <p className="font-jetbrains text-xs text-[var(--accent)] mt-1">
+            <p className="font-jetbrains text-[10px] sm:text-xs text-[var(--accent)] mt-1 truncate">
               {exp.company}{" // "}{exp.location}
             </p>
           </div>
           <span
-            className={`font-sharetech text-[10px] uppercase tracking-[0.15em] px-2 py-1 border cyber-chamfer-sm shrink-0 ${
+            className={`font-sharetech text-[9px] sm:text-[10px] uppercase tracking-[0.15em] px-2 py-1 border cyber-chamfer-sm shrink-0 ${
               exp.status === "ACTIVE"
                 ? "border-[var(--accent)] text-[var(--accent)] animate-pulse"
                 : "border-[var(--border)] text-[var(--muted-foreground)]"
@@ -72,7 +72,7 @@ function TimelineCard({
           {exp.period}
         </span>
 
-        <p className="font-jetbrains text-xs text-[var(--foreground)] mt-3 leading-relaxed tracking-wide">
+        <p className="font-jetbrains text-[11px] sm:text-xs text-[var(--foreground)] mt-3 leading-relaxed tracking-wide">
           {exp.detail}
         </p>
       </div>
@@ -97,7 +97,7 @@ export default function Experience() {
         {/* Timeline */}
         <div className="relative max-w-3xl">
           {/* Animated vertical line */}
-          <div className="absolute left-[9px] top-0 bottom-0 w-px bg-[var(--border)]">
+          <div className="absolute left-[9px] sm:left-[9px] top-0 bottom-0 w-px bg-[var(--border)]">
             <div
               className="absolute top-0 left-0 w-full bg-[var(--accent)] origin-top"
               style={{

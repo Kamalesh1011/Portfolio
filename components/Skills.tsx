@@ -51,9 +51,9 @@ export default function Skills() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8">
-          {/* Tabs - vertical on desktop */}
-          <div className="flex flex-row flex-wrap lg:flex-col gap-2">
+        <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6 lg:gap-8">
+          {/* Tabs - horizontal scroll on mobile, vertical on desktop */}
+          <div className="flex flex-row lg:flex-col gap-2 overflow-x-auto pb-2 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0 scrollbar-hide">
             {skillCategories.map((cat, index) => {
               const color = categoryColors[cat.name] || "var(--accent)";
               const icon = categoryIcons[cat.name] || "\u{1f4e6}";
@@ -61,7 +61,7 @@ export default function Skills() {
                 <button
                   key={cat.name}
                   onClick={() => setActiveTab(index)}
-                  className={`flex items-center gap-3 font-sharetech text-xs uppercase tracking-[0.15em] px-4 py-3 border transition-all duration-300 cyber-chamfer-sm text-left ${
+                  className={`flex items-center gap-3 font-sharetech text-xs uppercase tracking-[0.15em] px-4 py-3 border transition-all duration-300 cyber-chamfer-sm text-left shrink-0 lg:shrink lg:w-full ${
                     activeTab === index
                       ? "text-[var(--background)]"
                       : "border-[var(--border)] text-[var(--muted-foreground)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
@@ -79,7 +79,7 @@ export default function Skills() {
                 >
                   <span className="text-base">{icon}</span>
                   <div>
-                    <div className="font-semibold">{cat.name}</div>
+                    <div className="font-semibold whitespace-nowrap">{cat.name}</div>
                     <div className="text-[9px] opacity-60 mt-0.5">[{cat.skills.length} MODULES]</div>
                   </div>
                 </button>

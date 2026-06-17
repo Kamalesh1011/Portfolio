@@ -74,7 +74,7 @@ export default function Hero() {
           {/* Left — text */}
           <div className="space-y-6">
             {/* Subject ID label */}
-            <div className="font-sharetech text-xs text-[var(--accent)] uppercase tracking-[0.2em]">
+            <div className="font-sharetech text-[10px] sm:text-xs text-[var(--accent)] uppercase tracking-[0.2em]">
               <span>&gt; Subject ID: KBM-2026</span>
               <span
                 className="inline-block w-2 h-4 ml-1 bg-[var(--accent)] align-middle"
@@ -94,18 +94,18 @@ export default function Hero() {
             </h1>
 
             {/* Typewriter subtitle */}
-            <div className="h-8">
-              <span className="font-jetbrains text-lg sm:text-xl text-[var(--accent)]">
+            <div className="h-8 overflow-hidden">
+              <span className="font-jetbrains text-sm sm:text-lg md:text-xl text-[var(--accent)]">
                 {displayText}
                 <span
-                  className="inline-block w-[2px] h-5 ml-1 bg-[var(--accent)] align-middle"
+                  className="inline-block w-[2px] h-4 sm:h-5 ml-1 bg-[var(--accent)] align-middle"
                   style={{ animation: "blink 1s step-end infinite" }}
                 />
               </span>
             </div>
 
             {/* Bio line */}
-            <p className="font-jetbrains text-sm text-[var(--muted-foreground)] tracking-wide leading-relaxed max-w-lg">
+            <p className="font-jetbrains text-xs sm:text-sm text-[var(--muted-foreground)] tracking-wide leading-relaxed max-w-lg">
               Final Year B.Tech — AI &amp; Data Science — KCE Coimbatore — CGPA: 8.32
             </p>
 
@@ -126,23 +126,23 @@ export default function Hero() {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-4">
               <a
                 href="#projects"
-                className="btn-cyber btn-primary px-6 py-3 text-sm font-semibold cyber-chamfer-sm"
+                className="btn-cyber btn-primary px-5 sm:px-6 py-3 text-xs sm:text-sm font-semibold cyber-chamfer-sm text-center"
               >
                 [&gt; VIEW PROJECTS]
               </a>
               <a
                 href="/kamal_resume.pdf"
                 download
-                className="btn-cyber btn-secondary px-6 py-3 text-sm font-semibold cyber-chamfer-sm"
+                className="btn-cyber btn-secondary px-5 sm:px-6 py-3 text-xs sm:text-sm font-semibold cyber-chamfer-sm text-center"
               >
                 [&gt; DOWNLOAD RESUME]
               </a>
               <a
                 href="#contact"
-                className="btn-cyber btn-ghost px-6 py-3 text-sm font-semibold cyber-chamfer-sm"
+                className="btn-cyber btn-ghost px-5 sm:px-6 py-3 text-xs sm:text-sm font-semibold cyber-chamfer-sm text-center"
               >
                 [&gt; GET IN TOUCH]
               </a>

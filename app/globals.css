@@ -474,6 +474,31 @@ body {
   }
 }
 
+/* ===== SCROLLBAR HIDE (for horizontal scroll tabs) ===== */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===== MOBILE TOUCH IMPROVEMENTS ===== */
+@media (max-width: 767px) {
+  /* Prevent text selection on interactive elements for cleaner mobile UX */
+  .btn-cyber,
+  .card-default,
+  .card-terminal,
+  .card-holographic {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Increase tap targets for mobile */
+  .btn-cyber {
+    min-height: 44px;
+  }
+}
+
 /* ===== SELECTION ===== */
 ::selection {
   background: var(--accent);

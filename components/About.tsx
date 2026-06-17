@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import FloatingOrbs from "./FloatingOrbs";
 
 const stats = [
@@ -54,6 +54,12 @@ function AnimatedCounter({ target, suffix }: { target: number; suffix: string })
 }
 
 export default function About() {
+  const [flipped, setFlipped] = useState(false);
+
+  const toggleFlip = useCallback(() => {
+    setFlipped((prev) => !prev);
+  }, []);
+
   return (
     <section id="about" className="relative py-24 overflow-hidden">
       <div className="absolute inset-0 circuit-bg opacity-50" />
@@ -69,11 +75,20 @@ export default function About() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-12 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-8 md:gap-12 items-start">
           {/* Left — Profile card */}
           <div className="group perspective-[1000px]">
-            <div className="relative w-full max-w-sm mx-auto transition-transform duration-700 group-hover:[transform:rotateY(180deg)]"
-              style={{ transformStyle: "preserve-3d" }}>
+            <div
+              className={`relative w-full max-w-sm mx-auto transition-transform duration-700 ${
+                flipped ? "[transform:rotateY(180deg)]" : "group-hover:[transform:rotateY(180deg)]"
+              }`}
+              style={{ transformStyle: "preserve-3d" }}
+              onClick={toggleFlip}
+              onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") toggleFlip(); }}
+              role="button"
+              tabIndex={0}
+              aria-label="Flip profile card"
+            >
               {/* Front */}
               <div className="relative card-holographic p-0 overflow-hidden"
                 style={{ backfaceVisibility: "hidden" }}>
@@ -118,7 +133,7 @@ export default function About() {
               </div>
             </div>
             <p className="text-center font-sharetech text-xs text-[var(--muted-foreground)] mt-4 uppercase tracking-[0.15em]">
-              [Hover to flip]
+              [Tap to flip]
             </p>
           </div>
 
