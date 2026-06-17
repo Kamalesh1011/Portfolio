@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
+import { X } from "lucide-react";
 import { achievements } from "@/lib/data";
 
 const colorMap: Record<string, string> = {
@@ -17,13 +18,75 @@ const glowMap: Record<string, string> = {
   tertiary: "var(--shadow-neon-tertiary)",
 };
 
-function AchievementCard({ achievement, index }: { achievement: typeof achievements[0]; index: number }) {
+function PhotoLightbox({
+  src,
+  alt,
+  color,
+  onClose,
+}: {
+  src: string;
+  alt: string;
+  color: string;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", handleKey);
+    return () => {
+      document.body.style.overflow = "";
+      document.removeEventListener("keydown", handleKey);
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      className="fixed inset-0 z-[10001] flex items-center justify-center p-4 sm:p-8 cursor-pointer"
+      onClick={onClose}
+    >
+      <div className="absolute inset-0 bg-black/85 backdrop-blur-md" />
+      <div className="relative z-10 max-w-4xl w-full animate-[fadeInUp_0.2s_ease]" onClick={(e) => e.stopPropagation()}>
+        <button
+          onClick={onClose}
+          className="absolute -top-10 right-0 sm:top-0 sm:-right-10 text-[var(--foreground)] hover:text-[var(--accent)] transition-colors p-1 z-20"
+          aria-label="Close"
+        >
+          <X size={28} strokeWidth={1.5} />
+        </button>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={src}
+          alt={alt}
+          className="w-full max-h-[80vh] object-contain border-2 cyber-chamfer-sm"
+          style={{
+            borderColor: color,
+            boxShadow: `0 0 30px ${color}40, 0 0 60px ${color}20`,
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
+function AchievementCard({
+  achievement,
+  index,
+  onImageClick,
+}: {
+  achievement: (typeof achievements)[0];
+  index: number;
+  onImageClick: (src: string, alt: string) => void;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
+      ([entry]) => {
+        if (entry.isIntersecting) setVisible(true);
+      },
       { threshold: 0.2 }
     );
     if (ref.current) observer.observe(ref.current);
@@ -96,9 +159,13 @@ function AchievementCard({ achievement, index }: { achievement: typeof achieveme
             {achievement.images && achievement.images.length > 0 && (
               <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
                 {achievement.images.map((img, i) => (
-                  <div
+                  <button
                     key={i}
-                    className="shrink-0 w-28 h-20 sm:w-36 sm:h-24 border border-[var(--border)] overflow-visible cyber-chamfer-sm relative image-pop-parent"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onImageClick(img, `${achievement.title} photo ${i + 1}`);
+                    }}
+                    className="shrink-0 w-28 h-20 sm:w-36 sm:h-24 border border-[var(--border)] overflow-visible cyber-chamfer-sm relative image-pop-parent cursor-pointer"
                     style={{ borderColor: `${color}40` }}
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -115,10 +182,13 @@ function AchievementCard({ achievement, index }: { achievement: typeof achieveme
                         src={img}
                         alt={`${achievement.title} photo ${i + 1} enlarged`}
                         className="w-64 h-44 sm:w-80 sm:h-56 object-cover border-2 cyber-chamfer-sm shadow-2xl"
-                        style={{ borderColor: color, boxShadow: `0 0 20px ${color}60, 0 8px 32px rgba(0,0,0,0.6)` }}
+                        style={{
+                          borderColor: color,
+                          boxShadow: `0 0 20px ${color}60, 0 8px 32px rgba(0,0,0,0.6)`,
+                        }}
                       />
                     </div>
-                  </div>
+                  </button>
                 ))}
               </div>
             )}
@@ -142,13 +212,25 @@ function AchievementCard({ achievement, index }: { achievement: typeof achieveme
 }
 
 export default function Achievements() {
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
+
+  const openLightbox = useCallback((src: string, alt: string) => {
+    setLightbox({ src, alt });
+  }, []);
+
+  const closeLightbox = useCallback(() => {
+    setLightbox(null);
+  }, []);
+
   return (
     <section id="achievements" className="relative py-16 overflow-hidden">
       {/* Background mesh */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0"
+        <div
+          className="absolute inset-0"
           style={{
-            backgroundImage: "radial-gradient(circle at 30% 40%, #00ff8808 0%, transparent 50%), radial-gradient(circle at 70% 60%, #ff00ff06 0%, transparent 50%)",
+            backgroundImage:
+              "radial-gradient(circle at 30% 40%, #00ff8808 0%, transparent 50%), radial-gradient(circle at 70% 60%, #ff00ff06 0%, transparent 50%)",
           }}
         />
       </div>
@@ -171,10 +253,21 @@ export default function Achievements() {
               key={achievement.id}
               achievement={achievement}
               index={index}
+              onImageClick={openLightbox}
             />
           ))}
         </div>
       </div>
+
+      {/* Lightbox */}
+      {lightbox && (
+        <PhotoLightbox
+          src={lightbox.src}
+          alt={lightbox.alt}
+          color="var(--accent)"
+          onClose={closeLightbox}
+        />
+      )}
     </section>
   );
 }

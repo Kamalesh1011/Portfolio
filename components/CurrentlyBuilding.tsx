@@ -34,7 +34,7 @@ export default function CurrentlyBuilding() {
             <div className="card-terminal-dot" style={{ background: "#ffd700" }} />
             <div className="card-terminal-dot" style={{ background: "#00ff88" }} />
             <span className="font-sharetech text-[10px] sm:text-xs text-[var(--muted-foreground)] ml-3 uppercase tracking-[0.2em] truncate">
-              kamal@adya-ai:~/projects$ ps aux
+              kamal@ai:~/projects$ ps aux
             </span>
             <div className="ml-auto flex items-center gap-2 shrink-0">
               <span className="w-2 h-2 bg-[var(--accent)] rounded-full" style={{ animation: "pulseDot 2s ease-in-out infinite" }} />
@@ -92,7 +92,7 @@ export default function CurrentlyBuilding() {
           {/* Terminal footer */}
           <div className="px-4 sm:px-6 py-4 border-t border-[var(--border)] flex items-center justify-between">
             <span className="font-jetbrains text-xs sm:text-sm text-[var(--accent)]">
-              kamal@adya-ai:~${" "}
+              kamal@ai:~${" "}
               <span className="inline-block w-3 h-5 bg-[var(--accent)] align-middle"
                 style={{ animation: "blink 1s step-end infinite" }} />
             </span>

@@ -11,7 +11,6 @@ import Projects from "@/components/Projects";
 import CurrentlyBuilding from "@/components/CurrentlyBuilding";
 import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
-import ResumeButton from "@/components/ResumeButton";
 import GlitchDivider from "@/components/GlitchDivider";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -59,7 +58,6 @@ export default function Home() {
           <Contact />
         </main>
         <Footer />
-        <ResumeButton />
         <ScrollToTop />
       </div>
     </>
