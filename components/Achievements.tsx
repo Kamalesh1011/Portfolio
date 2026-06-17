@@ -36,7 +36,7 @@ function AchievementCard({ achievement, index }: { achievement: typeof achieveme
   return (
     <div
       ref={ref}
-      className={`card-terminal p-6 gold-shimmer transition-all duration-500 ${
+      className={`group card-terminal p-6 gold-shimmer transition-all duration-500 ${
         visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
       }`}
       style={{
@@ -81,6 +81,39 @@ function AchievementCard({ achievement, index }: { achievement: typeof achieveme
         <span className="font-sharetech text-xs uppercase tracking-[0.15em]" style={{ color }}>
           [{achievement.date}]
         </span>
+      </div>
+
+      {/* Expandable content — description + images on hover */}
+      <div className="hover-expand grid">
+        <div>
+          <div className="border-t border-[var(--border)] pt-4 mt-4 space-y-4">
+            {/* Description */}
+            <p className="font-jetbrains text-[11px] text-[var(--foreground)] leading-relaxed tracking-wide">
+              {achievement.description}
+            </p>
+
+            {/* Image gallery */}
+            {achievement.images && achievement.images.length > 0 && (
+              <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+                {achievement.images.map((img, i) => (
+                  <div
+                    key={i}
+                    className="shrink-0 w-28 h-20 sm:w-36 sm:h-24 border border-[var(--border)] overflow-hidden cyber-chamfer-sm"
+                    style={{ borderColor: `${color}40` }}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={img}
+                      alt={`${achievement.title} photo ${i + 1}`}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
       </div>
 
       {/* Progress bar decoration */}

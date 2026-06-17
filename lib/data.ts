@@ -21,6 +21,7 @@ export interface Achievement {
   badge: string;
   badgeColor: string;
   description: string;
+  images: string[];
 }
 
 export interface SkillCategory {
@@ -158,7 +159,8 @@ export const achievements: Achievement[] = [
     date: "APR 2026",
     badge: "INTL",
     badgeColor: "gold",
-    description: "NeuroForge // BCI Thought Visualization",
+    description: "Received global recognition for NeuroForge, a Brain-Computer Interface system that reads live EEG signals and displays what a person is thinking in real time. Competing at an international stage in Taipei, this honour highlights the project\u2019s innovation in edge AI and neurotechnology.",
+    images: ["/achievements/taipei_1.jpg", "/achievements/taipei_2.jpg", "/achievements/taipei_3.jpg"],
   },
   {
     id: "national-hackathon",
@@ -168,27 +170,19 @@ export const achievements: Achievement[] = [
     date: "JAN 2026",
     badge: "NATIONAL",
     badgeColor: "accent",
-    description: "Multi-agent supply chain intelligence",
+    description: "Won a prestigious national-level hackathon jointly organized by the IIT Kharagpur Alumni Association and Shiv Nadar University. Competing against teams from across India, this win reflects strong problem-solving skills and the ability to build impactful AI solutions under pressure.",
+    images: ["/achievements/iit_shivanadar_1.jpg", "/achievements/iit_shivanadar_2.jpg"],
   },
   {
     id: "aim25",
-    title: "WINNER \u2014 AIM'25",
+    title: "WINNER \u2014 AIM'25, INFYND",
     event: "Infynd Industry-Level Hackathon",
     location: "Coimbatore, India",
     date: "OCT 2025",
     badge: "INDUSTRY",
     badgeColor: "tertiary",
-    description: "Industry-level hackathon winner",
-  },
-  {
-    id: "hackzilla",
-    title: "FIRST PRIZE \u2014 HACKZILLA'25",
-    event: "KPR Institute of Engineering and Technology",
-    location: "Coimbatore, India",
-    date: "SEP 2025",
-    badge: "1ST PLACE",
-    badgeColor: "accent",
-    description: "First place finish",
+    description: "Secured first place at an industry-level AI hackathon organized by Infynd. This win demonstrated the ability to deliver production-ready AI solutions that meet real-world industry standards, standing out in a highly competitive professional setting.",
+    images: ["/achievements/aim_1.jpg", "/achievements/aim_2.jpg"],
   },
   {
     id: "hackbattle",
@@ -198,7 +192,19 @@ export const achievements: Achievement[] = [
     date: "SEP 2025",
     badge: "TOP 10",
     badgeColor: "secondary",
-    description: "Top 10 finish among national competitors",
+    description: "Selected among the top 10 teams at VIT\u2019s flagship Hackbattle competition, one of the most competitive student hackathons in South India. Reaching the finals reflects strong technical execution and innovative thinking among hundreds of participating teams.",
+    images: ["/achievements/vit_1.jpg", "/achievements/vit_2.jpg"],
+  },
+  {
+    id: "hackzilla",
+    title: "FIRST PRIZE \u2014 HACKZILLA'25",
+    event: "KPR Institute of Engineering and Technology",
+    location: "Coimbatore, India",
+    date: "SEP 2025",
+    badge: "1ST PLACE",
+    badgeColor: "accent",
+    description: "Claimed first place at Hackzilla 2025, a competitive hackathon held at KPR Institute of Engineering and Technology. This win showcases the ability to rapidly ideate, prototype, and present AI-driven solutions effectively within tight time constraints.",
+    images: ["/achievements/kpr_1.jpg", "/achievements/kpr_2.jpg"],
   },
 ];
 

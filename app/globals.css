@@ -483,6 +483,19 @@ body {
   display: none;
 }
 
+/* ===== HOVER EXPAND (grid rows 0fr -> 1fr) ===== */
+.hover-expand {
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s ease-in-out;
+}
+.group:hover .hover-expand {
+  grid-template-rows: 1fr;
+}
+.hover-expand > div {
+  min-height: 0;
+  overflow: hidden;
+}
+
 /* ===== MOBILE TOUCH IMPROVEMENTS ===== */
 @media (max-width: 767px) {
   /* Prevent text selection on interactive elements for cleaner mobile UX */
