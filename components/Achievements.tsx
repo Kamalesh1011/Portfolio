@@ -98,16 +98,26 @@ function AchievementCard({ achievement, index }: { achievement: typeof achieveme
                 {achievement.images.map((img, i) => (
                   <div
                     key={i}
-                    className="shrink-0 w-28 h-20 sm:w-36 sm:h-24 border border-[var(--border)] overflow-hidden cyber-chamfer-sm"
+                    className="shrink-0 w-28 h-20 sm:w-36 sm:h-24 border border-[var(--border)] overflow-visible cyber-chamfer-sm relative image-pop-parent"
                     style={{ borderColor: `${color}40` }}
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={img}
                       alt={`${achievement.title} photo ${i + 1}`}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-all duration-300 image-pop-child"
                       loading="lazy"
                     />
+                    {/* Enlarged preview on hover */}
+                    <div className="image-pop-preview pointer-events-none absolute z-50 opacity-0 transition-all duration-300 ease-out">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={img}
+                        alt={`${achievement.title} photo ${i + 1} enlarged`}
+                        className="w-64 h-44 sm:w-80 sm:h-56 object-cover border-2 cyber-chamfer-sm shadow-2xl"
+                        style={{ borderColor: color, boxShadow: `0 0 20px ${color}60, 0 8px 32px rgba(0,0,0,0.6)` }}
+                      />
+                    </div>
                   </div>
                 ))}
               </div>
