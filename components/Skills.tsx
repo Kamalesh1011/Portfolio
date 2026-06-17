@@ -29,7 +29,7 @@ export default function Skills() {
   const activeColor = categoryColors[activeCategory.name] || "var(--accent)";
 
   return (
-    <section id="skills" className="relative py-24 overflow-hidden">
+    <section id="skills" className="relative py-16 overflow-hidden">
       <div className="absolute inset-0 circuit-bg opacity-30" />
 
       {/* Floating geometric accents */}
@@ -42,7 +42,7 @@ export default function Skills() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div className="mb-12">
+        <div className="mb-8">
           <span className="font-sharetech text-sm text-[var(--accent)] uppercase tracking-[0.2em]">
             &gt; nmap -sV --script=skills scan
           </span>

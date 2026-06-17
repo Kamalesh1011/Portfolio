@@ -36,11 +36,11 @@ export default function Contact() {
 
   return (
     <>
-      <section id="contact" className="relative py-24 overflow-hidden">
+      <section id="contact" className="relative py-16 overflow-hidden">
         <div className="absolute inset-0 circuit-bg opacity-30" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section header */}
-          <div className="mb-12">
+          <div className="mb-8">
             <span className="font-sharetech text-sm text-[var(--accent)] uppercase tracking-[0.2em]">
               &gt; ssh kamal@comms.kamal.dev -p 2089
             </span>

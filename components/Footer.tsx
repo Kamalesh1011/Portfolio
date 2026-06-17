@@ -78,9 +78,7 @@ export default function Footer() {
           <p className="font-sharetech text-[10px] text-[var(--muted-foreground)] uppercase tracking-[0.2em]">
             &copy; 2026 Kamaleshwaran BM. All rights reserved.
           </p>
-          <p className="font-jetbrains text-[10px] text-[var(--muted-foreground)]">
-            Built with Next.js + Tailwind CSS
-          </p>
+         
         </div>
       </div>
     </footer>

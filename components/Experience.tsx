@@ -82,10 +82,10 @@ function TimelineCard({
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative py-24 overflow-hidden">
+    <section id="experience" className="relative py-16 overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div className="mb-12">
+        <div className="mb-8">
           <span className="font-sharetech text-sm text-[var(--accent)] uppercase tracking-[0.2em]">
             &gt; journalctl --since &quot;2023-01-01&quot; --priority=info
           </span>
